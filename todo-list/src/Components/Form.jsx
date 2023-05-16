@@ -7,6 +7,7 @@ const Form = (props) => {
     const changeHandler= (e) => {
         console.log(e)
         setItem({...item, [e.target.name]: e.target.value})
+        console.log(new Date())
     }
 
     const submitHandler = (e) => {
@@ -15,6 +16,7 @@ const Form = (props) => {
         setItem({Title: "",
         dueDate:""})
     }
+
 
 
 

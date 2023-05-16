@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
         <Form list = {list} setList ={setList} item ={item} setItem = {setItem}/>
-        <ToDo list = {list}/>
+        <ToDo list = {list} setList ={setList} item = {item}/>
     </div>
   );
 }
