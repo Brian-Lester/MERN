@@ -7,15 +7,28 @@ const Form = (props) => {
     const changeHandler= (e) => {
         console.log(e)
         setItem({...item, [e.target.name]: e.target.value})
-        console.log(new Date())
     }
-
     const submitHandler = (e) => {
         e.preventDefault();
-        setList([...list, item]); 
-        setItem({Title: "",
-        dueDate:""})
-    }
+      
+        if (new Date(item.dueDate) < new Date()) {
+          // Date is in the past, display an error or handle it accordingly
+          // For example:
+          alert('Due date cannot be in the past');
+          return;
+        }
+      
+        setList([...list, item]);
+        setItem({ Title: '', dueDate: '' });
+      };
+
+    const checkDate = () => {
+        const currentDate = new Date();
+        if (new Date(item.dueDate) < currentDate) {
+            return <p>Date Cant be in the past</p>;
+        }
+        return null;
+    };
 
 
 
@@ -38,10 +51,10 @@ const Form = (props) => {
                     When does this need to be done?
                 </label>
                 {
-                    new Date(item.dueDate) < new Date()?
-                    <p>date Cant be in the past</p>:
-                    null
+                    checkDate()
                 }
+                {console.log(new Date(item.dueDate))}
+                {console.log(new Date())}
                 <input type ="date" onChange={changeHandler} name = "dueDate" value ={item.dueDate} className='form-control'></input>
                 </div>
                 <button type="submit" className="btn btn-outline-primary">Submit</button>
