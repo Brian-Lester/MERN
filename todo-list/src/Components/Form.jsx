@@ -22,9 +22,12 @@ const Form = (props) => {
         setItem({ Title: '', dueDate: '' });
       };
 
-    const checkDate = () => {
+      const checkDate = (e) => {
+        const [year, month, day] = e.split('-');
+        const dateValue = new Date(year, month - 1, day);
         const currentDate = new Date();
-        if (new Date(item.dueDate) < currentDate) {
+        currentDate.setHours(0, 0, 0, 0)
+        if (new Date(dateValue) < currentDate) {
             return <p>Date Cant be in the past</p>;
         }
         return null;
@@ -51,10 +54,8 @@ const Form = (props) => {
                     When does this need to be done?
                 </label>
                 {
-                    checkDate()
+                    checkDate(item.dueDate)
                 }
-                {console.log(new Date(item.dueDate))}
-                {console.log(new Date())}
                 <input type ="date" onChange={changeHandler} name = "dueDate" value ={item.dueDate} className='form-control'></input>
                 </div>
                 <button type="submit" className="btn btn-outline-primary">Submit</button>
