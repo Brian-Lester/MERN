@@ -1,1 +1,32 @@
 1:npx create-react-app your-project-name-here
+
+2.arrow function syntax = const changeHandler= (e) => {}
+
+2.1: state can only be passed down from parent componet 
+
+2.2.   const [item , setItem] = useState({
+    Title:'',
+    dueDate : '',
+    done: false})
+
+2.3    const {list , setList ,item , setItem} = props
+
+
+
+
+3.npm install axios, react-router-dom 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+npx nodemon .\exress.js
+
+
+
